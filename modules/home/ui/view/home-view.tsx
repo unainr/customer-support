@@ -1,6 +1,8 @@
 
 export const HomeView = () => {
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen'>HomeView</div>
+    <div className='flex items-center justify-center min-h-screen my-20'>
+      Home view
+    </div>
   )
 }

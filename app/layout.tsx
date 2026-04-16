@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ReactQueryProviders } from "@/components/providers/react-query-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -47,7 +48,10 @@ export default function RootLayout({
 						defaultTheme="light"
 						enableSystem
 						disableTransitionOnChange>
-						<ReactQueryProviders>{children}</ReactQueryProviders>
+						<ReactQueryProviders>
+							{children}
+							<Toaster/>
+						</ReactQueryProviders>
 					</ThemeProvider>{" "}
 				</body>
 			</ClerkProvider>
