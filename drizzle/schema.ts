@@ -8,7 +8,8 @@ import {
   boolean,
   integer,
   varchar,
-  pgEnum
+  pgEnum,
+  jsonb
 } from "drizzle-orm/pg-core"
 
 export const sourceTypeEnum = pgEnum("source_type", ["text", "pdf", "website"])
@@ -61,6 +62,19 @@ export const knowledgeChunks = pgTable(
     index("chunks_chatbot_id_index").on(table.chatbotId),
   ]
 )
+
+export const mockups = pgTable("mockups", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: text("user_id").notNull(),           // Clerk userId
+  templateId: text("template_id").notNull(),   // which preset image
+  elements: jsonb("elements").notNull(),        // text/logo layers as JSON
+  previewUrl: text("preview_url"),             // ImageKit exported preview
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export type Mockup = typeof mockups.$inferSelect;
+export type NewMockup = typeof mockups.$inferInsert;
 
 // ─── Types ─────────────────────────────────────────────────────────
 export type InsertChatbot = typeof chatBots.$inferInsert

@@ -8,6 +8,13 @@
       "when": 1776064195032,
       "tag": "0000_futuristic_romulus",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1776401725709,
+      "tag": "0001_classy_warbound",
+      "breakpoints": true
     }
   ]
 }
